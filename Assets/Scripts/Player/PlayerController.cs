@@ -2,12 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]private int health;
     [SerializeField]private float moveSpeed;
     [SerializeField]private Rigidbody playerRigidbody;
+
+    public UnityEvent Hit;
+    public UnityEvent PlayerDeath;
+    
     public Player Player;
 
     private Vector3 moveInput;
@@ -16,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
-        Player = new Player(health, moveSpeed, playerRigidbody);
+        Player = new Player(health, moveSpeed, playerRigidbody, Hit, PlayerDeath);
     }
 
     private void Update()
