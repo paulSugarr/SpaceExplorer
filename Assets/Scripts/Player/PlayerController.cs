@@ -16,15 +16,15 @@ public class PlayerController : MonoBehaviour
     public Player Player;
     public GunController Gun;
 
-    private Vector3 moveInput;
-    private Vector3 moveVelocity;
+    private Vector3 _moveInput;
+    private Vector3 _moveVelocity;
 
-    private Camera mainCmera;
+    private Camera _mainCamera;
 
     private void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
-        mainCmera = FindObjectOfType<Camera>();
+        _mainCamera = FindObjectOfType<Camera>();
         
         Player = new Player(health, Hit, PlayerDeath);
     }
@@ -38,20 +38,22 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayer();
+        MovePlayerByDirection();
     }
 
+    //---------------------------------------------//
+    
     private void SetMoveDirection()
     {
-        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"),0f ,Input.GetAxisRaw("Vertical"));
-        moveVelocity = moveInput * moveSpeed;
+        _moveInput = new Vector3(Input.GetAxisRaw("Horizontal"),0f ,Input.GetAxisRaw("Vertical"));
+        _moveVelocity = _moveInput * moveSpeed;
     }
 
-    private void MovePlayer() => playerRigidbody.velocity = moveVelocity; 
+    private void MovePlayerByDirection() => playerRigidbody.velocity = _moveVelocity; 
 
     private void LookAtMousePoint()
     {
-        var cameraRay = mainCmera.ScreenPointToRay(Input.mousePosition);
+        var cameraRay = _mainCamera.ScreenPointToRay(Input.mousePosition);
         var groundPlane = new Plane(Vector3.up, Vector3.zero);
         float rayLength;
 
@@ -67,9 +69,9 @@ public class PlayerController : MonoBehaviour
     private void UseGun()
     {
         if (Input.GetMouseButtonDown(0))
-            Gun.StartFire();
+            Gun.StartShooting();
         
         if (Input.GetMouseButtonUp(0))
-            Gun.StopFire();
+            Gun.StopShooting();
     }
 }

@@ -5,36 +5,50 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
-    private bool isFiring;
+    private bool _isFiring;
 
     [SerializeField] private Bullet bullet;
 
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float timeBetweenShots;
-    private float shoutCounter;
+    [SerializeField] private float maxLifeTime;
+    
+    private float _shootCounter;
 
     [SerializeField] private Transform firePoint;
 
     private void Update()
     {
-        if (isFiring)
+        ShootingByTrigger();
+    }
+
+    public void StartShooting() => _isFiring = true;
+    
+    public void StopShooting() => _isFiring = false;
+
+    //---------------------------------------------//
+    
+    private void ShootingByTrigger()
+    {
+        if (_isFiring)
         {
-            shoutCounter -= Time.deltaTime;
-            if (shoutCounter <= 0)
+            _shootCounter -= Time.deltaTime;
+            if (_shootCounter <= 0)
             {
-                shoutCounter = timeBetweenShots;
-                var newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as Bullet;
-                newBullet.speed = bulletSpeed;
+                _shootCounter = timeBetweenShots;
+                Shoot();
             }
         }
         else
         {
-            shoutCounter = 0;
+            _shootCounter = 0;
         }
     }
 
-    public void StartFire() => isFiring = true;
-    
-    public void StopFire() => isFiring = false;
-
+    private void Shoot()
+    {
+        var newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+        newBullet.Speed = bulletSpeed;
+        newBullet.MaxLifeTime = maxLifeTime;
+    }
 }
