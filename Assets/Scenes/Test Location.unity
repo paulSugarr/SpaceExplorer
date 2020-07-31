@@ -489,7 +489,8 @@ MonoBehaviour:
   bullet: {fileID: 2186164365256551652, guid: 92c9181493ffd434692367b6756c6518, type: 3}
   bulletSpeed: 20
   timeBetweenShots: 0.1
-  maxLifeTime: 2
+  lifeTime: 2
+  damage: 5
   firePoint: {fileID: 1275497562}
 --- !u!1 &1165954749
 GameObject:
