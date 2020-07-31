@@ -17,12 +17,13 @@ public class PlayerControls : MonoBehaviour, IGravity
 
     private CharacterController _characterController;
     private Animator _animator;
-    [SerializeField] private MobileController _mobileController;
+    private MobileController _mobileController;
     private bool _jumpButton;
     private void Start()
     {
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
+        _mobileController = UIController.MobileController;
     }
     private void FixedUpdate()
     {
