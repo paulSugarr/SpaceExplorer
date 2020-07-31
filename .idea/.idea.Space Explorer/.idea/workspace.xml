@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3c123a85-3610-425e-a131-6a2e6de9206f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space Explorer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space Explorer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Bullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/GunController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/GunController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" afterDir="false" />
-    </list>
+    <list default="true" id="3c123a85-3610-425e-a131-6a2e6de9206f" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,12 +181,12 @@
       <updated>1595990512969</updated>
       <workItem from="1595990521400" duration="4229000" />
       <workItem from="1596183212750" duration="5008000" />
-      <workItem from="1596200237165" duration="2876000" />
+      <workItem from="1596200237165" duration="2981000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12113000" />
+    <option name="totallyTimeSpent" value="12218000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
