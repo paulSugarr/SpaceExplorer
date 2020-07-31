@@ -6,10 +6,9 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float Speed { get; set; }
-    public float MaxLifeTime { get; set; }
+    public float LifeTime { get; set; }
+    public  int Damage { get; set; }
     
-    private float _currentLifeTime;
-
     private void Update()
     {
         CheckLifeTime();
@@ -18,6 +17,9 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        if (other.gameObject.tag == "Enemy")
+            other.gameObject.GetComponent<EnemyController>().Enemy.ApplyDamage(Damage);
+        
         Destroy(gameObject);
     }
     
@@ -25,11 +27,18 @@ public class Bullet : MonoBehaviour
 
     private void CheckLifeTime()
     {
-        _currentLifeTime += Time.deltaTime;
-        if (_currentLifeTime >= MaxLifeTime)
+        LifeTime -= Time.deltaTime;
+        if (LifeTime <= 0)
             Destroy(gameObject);
     }
     
-    private void MoveBullet() => transform.Translate(Vector3.forward * Speed * Time.deltaTime); 
+    private void MoveBullet() => transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+
+    public void SetBulletParametrs(float speed, float lifeTime, int damage)
+    {
+        Speed = speed;
+        LifeTime = lifeTime;
+        Damage = damage;
+    }
     
 }

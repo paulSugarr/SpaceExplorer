@@ -11,7 +11,8 @@ public class GunController : MonoBehaviour
 
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float timeBetweenShots;
-    [SerializeField] private float maxLifeTime;
+    [SerializeField] private float lifeTime;
+    [SerializeField] private int damage;
     
     private float _shootCounter;
 
@@ -48,7 +49,6 @@ public class GunController : MonoBehaviour
     private void Shoot()
     {
         var newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
-        newBullet.Speed = bulletSpeed;
-        newBullet.MaxLifeTime = maxLifeTime;
+        newBullet.SetBulletParametrs(bulletSpeed, lifeTime, damage);
     }
 }
