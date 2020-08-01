@@ -20,12 +20,22 @@ public class GunController : MonoBehaviour
 
     private void Update()
     {
+        UseGun();
         ShootingByTrigger();
     }
 
     public void StartShooting() => _isFiring = true;
     
     public void StopShooting() => _isFiring = false;
+    
+    private void UseGun()
+    {
+        if (Input.GetMouseButtonDown(0))
+            StartShooting();
+        
+        if (Input.GetMouseButtonUp(0))
+            StopShooting();
+    }
 
     //---------------------------------------------//
     

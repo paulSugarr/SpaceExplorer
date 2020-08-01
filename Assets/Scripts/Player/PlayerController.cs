@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public UnityEvent Hit;
     public UnityEvent PlayerDeath;
     
-    public Player Player;
+    public PlayerStats Player;
     public GunController Gun;
 
     private Vector3 _moveInput;
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
         _mainCamera = FindObjectOfType<Camera>();
         
-        Player = new Player(health, Hit, PlayerDeath);
+        Player = new PlayerStats(health, Hit, PlayerDeath);
     }
 
     private void Update()

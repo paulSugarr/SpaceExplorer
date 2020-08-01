@@ -10,6 +10,7 @@ public class MobileController : MonoBehaviour, IDragHandler, IPointerUpHandler, 
     private Image joystickBG;
     [SerializeField] Image joystick;
     [SerializeField] float _sensitivity = 1;
+    
     private Vector2 inputVector;
 
 
@@ -54,4 +55,5 @@ public class MobileController : MonoBehaviour, IDragHandler, IPointerUpHandler, 
             return inputVector.y;
         else return Input.GetAxis("Vertical");
     }
+
 }
