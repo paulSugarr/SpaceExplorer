@@ -14,12 +14,13 @@ public class Bullet : MonoBehaviour
         CheckLifeTime();
         MoveBullet();
     }
-
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
-            other.gameObject.GetComponent<EnemyController>().Enemy.ApplyDamage(Damage);
-        
+        if (GameManager.CheckEnemy(other, out EnemyStats enemy))
+        {
+            enemy.ApplyDamage(Damage);
+        }
+
         Destroy(gameObject);
     }
     

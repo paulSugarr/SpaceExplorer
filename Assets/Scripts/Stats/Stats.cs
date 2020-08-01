@@ -5,10 +5,10 @@ using UnityEngine.Events;
 
 public class Stats : MonoBehaviour
 {
-    protected int _health;
+    [SerializeField] protected int _health;
     
-    protected UnityEvent Hit;
-    protected UnityEvent Death;
+    protected event System.Action Hit;
+    protected event System.Action Death;
     
     public void ApplyDamage(int damage)
     {
@@ -16,13 +16,13 @@ public class Stats : MonoBehaviour
         {
             _health = 0;
             //Событие убийства
-            Death.Invoke();
+            Death?.Invoke();
         }
         else
         {
             _health -= damage;
             //Событе нанесения дамага
-            Hit.Invoke();
+            Hit?.Invoke();
         }
     }
 }

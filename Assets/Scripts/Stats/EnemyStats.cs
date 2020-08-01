@@ -5,10 +5,12 @@ using UnityEngine.Events;
 
 public class EnemyStats : Stats
 {
-    public EnemyStats(int health, UnityEvent hit, UnityEvent enemyDeath)
+    private void Start()
     {
-        _health = health;
-        Hit = hit;
-        Death = enemyDeath;
+        Death += DestroySelf;
+    }
+    private void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }

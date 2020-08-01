@@ -25,8 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         playerRigidbody = GetComponent<Rigidbody>();
         _mainCamera = FindObjectOfType<Camera>();
-        
-        Player = new PlayerStats(health, Hit, PlayerDeath);
+
     }
 
     private void Update()
