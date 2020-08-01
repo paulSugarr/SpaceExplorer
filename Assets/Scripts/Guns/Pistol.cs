@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Pistol : Gun
 {
-    protected override void Shoot()
+    public override void Shoot()
     {
-        var newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
-        newBullet.SetBulletParametrs(bulletSpeed, lifeTime, damage);
+        if (CanShoot())
+        {
+            var newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+            newBullet.SetBulletParametrs(bulletSpeed, lifeTime, damage);
+            _shootCounter = 0;
+        }
+
     }
 }

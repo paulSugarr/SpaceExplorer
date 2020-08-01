@@ -29,7 +29,7 @@ public class PlayerControls : MonoBehaviour, IGravity
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            PhysicsExtensions.AddImpulse(this, 30f, transform.forward);
+            PhysicsExtensions.AddImpulse(this, 400f, transform.forward);
         }
         Impacts();
         Moving();
