@@ -7,7 +7,8 @@ public class Bullet : MonoBehaviour
 {
     public float Speed { get; set; }
     public float LifeTime { get; set; }
-    public  int Damage { get; set; }
+    public int Damage { get; set; }
+    public Owner Owner { get; set; }
     
     private void Update()
     {
@@ -16,15 +17,13 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (GameManager.CheckEnemy(other, out EnemyStats enemy))
+        if (GameManager.CheckEnemy(other, Owner, out Stats enemy))
         {
             enemy.ApplyDamage(Damage);
         }
 
         Destroy(gameObject);
     }
-    
-    //---------------------------------------------//
 
     private void CheckLifeTime()
     {
@@ -35,11 +34,12 @@ public class Bullet : MonoBehaviour
     
     private void MoveBullet() => transform.Translate(Vector3.forward * Speed * Time.deltaTime);
 
-    public void SetBulletParametrs(float speed, float lifeTime, int damage)
+    public void SetBulletParametrs(float speed, float lifeTime, int damage, Owner owner)
     {
         Speed = speed;
         LifeTime = lifeTime;
         Damage = damage;
+        Owner = owner;
     }
     
 }

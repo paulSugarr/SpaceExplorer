@@ -49,9 +49,23 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(name);
     }
-    public static bool CheckEnemy(Collider other, out EnemyStats enemy)
+    public static bool CheckEnemy(Collider other, Owner owner, out Stats enemy)
     {
-        enemy = other.gameObject.GetComponent<EnemyStats>();
-        return other.gameObject.GetComponent<EnemyStats>() != null;
+        switch (owner)
+        {
+            case Owner.Player:
+                enemy = other.gameObject.GetComponent<EnemyStats>();
+                return other.gameObject.GetComponent<EnemyStats>() != null;
+            case Owner.Enemy:
+                enemy = other.gameObject.GetComponent<PlayerStats>();
+                return other.gameObject.GetComponent<PlayerStats>() != null;
+            case Owner.Ally:
+                enemy = other.gameObject.GetComponent<EnemyStats>();
+                return other.gameObject.GetComponent<EnemyStats>() != null;
+            default:
+                enemy = null;
+                return false;
+        }
+
     }
 }

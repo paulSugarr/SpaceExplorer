@@ -9,7 +9,7 @@ public class Pistol : Gun
         if (CanShoot())
         {
             var newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
-            newBullet.SetBulletParametrs(bulletSpeed, lifeTime, damage);
+            newBullet.SetBulletParametrs(bulletSpeed, lifeTime, damage, Owner);
             _shootCounter = 0;
         }
 
